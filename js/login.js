@@ -15,7 +15,7 @@ function logar() {
     {
       id: '1',
       name: 'ADMIN',
-      email: 'dametchan@gmail.com',
+      email: 'algum@email.com',
       senha: '123456'
     }
   ]
