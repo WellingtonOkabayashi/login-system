@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+:root {
+  --text-h2-bg: rgb(90, 18, 94);
+  --text-h2-bg-opacity: rgba(90, 18, 94, 0.3);
+  --text-h2-hover: rgb(67, 16, 70);
+  --button-text: rgb(246, 244, 247);
+  --button-text-opacity: rgba(246, 244, 247, 0.3);
+  --alert: rgba(245, 11, 11);
+}
+/*================start-of-index================*/
+
+#msgerror {
+  color: var(--alert);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.form_container {
+  padding: 50px;
+  border-radius: 15px;
+  border: 1px solid var(--text-h2-bg);
+}
+input {
+  width: 300px;
+  padding: 6px;
+  font-size: 17px;
+}
+.email {
+  border: 1px solid lightgray;
+  margin: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.senha {
+  border: 1px solid lightgray;
+  margin: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.button {
+  margin-top: 50px;
+}
+button {
+  border: 1px solid lightgray;
+  width: 300px;
+  padding: 6px 0;
+  background-color: var(--text-h2-bg);
+  color: var(--button-text);
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--text-h2-hover);
+}
+h2 {
+  color: var(--text-h2-bg);
+  margin-bottom: 40px;
+}
+/*================end-of-index================*/
+/*================start-of-dashboard================*/
+.navigation {
+  background-color: var(--text-h2-bg);
+  height: 70px;
+  width: 100%;
+  position: sticky;
+  z-index: 9999;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fa-address-card {
+  top: 15px;
+  font-size: 40px;
+  color: var(--button-text);
+  margin-left: 30px;
+  margin-right: 10px;
+}
+.menu ul {
+  display: flex;
+
+  margin-right: 10px;
+  align-items: center;
+}
+.efect {
+  margin-right: 10px;
+  padding: 5px 20px;
+  color: var(--button-text);
+  text-align: center;
+  transition: 0.5s ease;
+  margin-left: 10px;
+}
+.efect:hover {
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--button-text-opacity);
+  color: var(--text-h2-bg);
+}
+.menu a {
+  color: var(--button-text);
+  transition: all 0.5s;
+}
+
+img {
+  box-sizing: content-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: 0.3s ease;
+}
+img:hover {
+  border: 3px solid var(--button-text-opacity);
+}
+.background_container {
+  position: relative;
+}
+.container-dashboard {
+  position: relative;
+  height: 100vh;
+  background-color: lightgrey;
+}
+.dashboard-top {
+  background-color: var(--button-text);
+  height: 70px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+}
+.dashboard-top h2 {
+  display: grid;
+  margin-left: 30px;
+  padding: 16px 0;
+}
+
+.dash-box {
+  border: 3px dashed var(--text-h2-bg-opacity);
+  width: 80vw;
+  height: 60vh;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.menu .fa-bars,
+.menu .fa-xmark {
+  display: none;
+}
+.hamburguer {
+  position: absolute;
+  top: 25px;
+  right: 0;
+}
+#usuario {
+  margin-left: 0;
+  margin-right: 30px;
+  font-size: 14px;
+  color: var(--button-text);
+  font-weight: 400;
+}
+.usuario {
+  display: flex;
+  align-items: center;
+}
+/*================end-of-dashboard================*/
+/*================media-queries================*/
+@media (max-width: 767px) {
+  .navigation.open {
+    position: sticky;
+  }
+  .dashboard-top {
+    position: sticky;
+  }
+  .menu ul {
+    display: none;
+  }
+  .menu .fa-bars {
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    margin-right: 30px;
+    color: var(--button-text);
+  }
+  .navigation.open .fa-bars {
+    display: none;
+    transition: 0.5s ease;
+  }
+  .navigation.open .fa-xmark {
+    display: block;
+    position: absolute;
+    color: var(--button-text);
+    font-size: 25px;
+    right: 31px;
+    transition: 0.5s ease;
+  }
+  .navigation.open {
+    transition: 0.3s ease;
+    height: 400px;
+  }
+  .navigation.open .hamburguer {
+    position: absolute;
+    top: 25px;
+    right: 0;
+  }
+  .navigation.open .menu ul {
+    display: grid;
+  }
+  .navigation.open li {
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .navigation.open .fa-address-card {
+    position: absolute;
+    top: 15px;
+  }
+  .usuario {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="background_container">
+      <nav class="navigation">
+        <i class="fa fa-address-card" aria-hidden="true"></i>
+
+        <div class="menu">
+          <ul>
+            <li class="efect"><a href="#">Dashboard</a></li>
+            <li class="efect"><a href="#">Perfil</a></li>
+            <li class="efect"><a href="#">Configurações</a></li>
+            <li class="efect"><a onclick="sair()" href="#">Sair</a></li>
+            <div class="usuario">
+              <img src="https://github.com/WellingtonOkabayashi.png" alt="" />
+              <h5 id="usuario"></h5>
+            </div>
+          </ul>
+          <div class="hamburguer">
+            <i onclick="mobilemenu()" class="fa-solid fa-bars"></i>
+            <i onclick="mobilemenu()" class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+
+        <!--menu-->
+      </nav>
+      <div class="container-dashboard">
+        <div class="dashboard-top">
+          <h2>Dashboard</h2>
+        </div>
+        <div class="dash-container">
+          <div class="dash-box"></div>
+        </div>
+      </div>
+    </div>
+    <!--backgroun-container-->
+  </body>
+  <script src="../js/login.js"></script>
+</html>
