@@ -103,6 +103,7 @@ function check() {
 check()
 
 //===========server==========//
+/*
 const url = 'http://localhost:5500/api'
 
 function getUsers() {
@@ -140,3 +141,4 @@ function updateSenha() {
     })
     .catch(error => console.error(error))
 }
+*/
