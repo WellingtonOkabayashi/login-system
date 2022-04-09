@@ -180,6 +180,29 @@ img:hover {
   display: flex;
   align-items: center;
 }
+
+.dash-perfil {
+  text-align: center;
+  margin-top: 80px;
+  display: grid;
+}
+.dash-perfil .campos {
+  padding-top: 10px;
+}
+.dash-perfil .update {
+  margin-top: 20px;
+}
+.dash-perfil input {
+  text-align: center;
+  font-weight: 700;
+}
+.dash-log > input {
+  background-color: lightgray;
+  font-size: 22px;
+
+  border: 0;
+}
+
 /*================end-of-dashboard================*/
 /*================media-queries================*/
 @media (max-width: 767px) {
