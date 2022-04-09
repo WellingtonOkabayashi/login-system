@@ -5,65 +5,66 @@ function mobilemenu() {
 
   nav.classList.toggle('open')
 }
+const apiUrl =
+  'https://wellingtonokabayashi.github.io/login-system/api/index.json'
 
-let listaUser = [
-  {
-    id: '1',
-    name: 'ADMIN',
-    email: 'algum@email.com',
-    senha: '123456'
-  }
-]
+async function logar() {
+  await axios
+    .get(apiUrl)
+    .then(response => {
+      const usuario = response.data
+      //console.log(usuario[0])
+      localStorage.setItem('emaildb', usuario[0].email)
+      localStorage.setItem('namedb', usuario[0].name)
+      localStorage.setItem('senhadb', usuario[0].senha)
+    })
 
-function logar() {
+    .catch(error => console.log(error))
+
   let email = document.querySelector('#email')
   let senha = document.querySelector('#senha')
   let msgerror = document.querySelector('#msgerror')
 
-  //console.log(listaUser)
-  //console.log(listaUser[0].email)
-  //console.log(listaUser[0].senha)
   let userValid = {
     email: '',
     senha: '',
     name: ''
   }
 
-  listaUser.forEach(users => {
-    if (
-      email.value == listaUser[0].email &&
-      senha.value == listaUser[0].senha
-    ) {
-      window.location.href = 'src/dashboard.html'
+  if (
+    email.value == localStorage.getItem('emaildb') &&
+    senha.value == localStorage.getItem('senhadb')
+  ) {
+    window.location.href = 'src/dashboard.html'
 
-      userValid = {
-        email: listaUser[0].email,
-        senha: listaUser[0].senha
-      }
-      let token = Math.random().toString(16).substr(2)
-      localStorage.setItem('token', token)
-      let login = listaUser[0]
-      let senha = listaUser[0]
-
-      localStorage.setItem('senha', JSON.stringify(listaUser[0].senha))
-      localStorage.setItem('login', JSON.stringify(listaUser[0].name))
-    } else {
-      msgerror.setAttribute('style', 'display:block')
-      msgerror.innerHTML = 'Email ou Senha incorretos'
-      email.focus()
+    userValid = {
+      email: localStorage.getItem('emaildb'),
+      senha: localStorage.getItem('senhadb')
     }
-  })
+
+    let token = Math.random().toString(16).substr(2)
+    localStorage.setItem('token', token)
+  }
+  //
+  else {
+    msgerror.setAttribute('style', 'display:block')
+    msgerror.innerHTML = 'Email ou Senha incorretos'
+    email.focus()
+  }
 }
 //console.log(userValid)
 
 function sair() {
   localStorage.removeItem('token')
-  localStorage.removeItem('userLogado')
+
+  localStorage.removeItem('namedb')
+  localStorage.removeItem('senhadb')
+  localStorage.removeItem('emaildb')
   window.location.href = '../index.html'
 }
 function loged() {
-  let userLog = JSON.parse(localStorage.getItem('login'))
-  let senhaLog = JSON.parse(localStorage.getItem('senha'))
+  let userLog = localStorage.getItem('namedb')
+  let senhaLog = localStorage.getItem('senhadb')
   //console.log(userLog)
   let usuario = document.querySelector('#usuario')
   let dash = document.querySelector('.dash-box')
@@ -101,7 +102,6 @@ function check() {
   }
 }
 check()
-const url = 'https://wellingtonokabayashi.github.io/login-system/api/index.json'
 
 //console.log(listaUser[0].senha)
 
