@@ -6,19 +6,19 @@ function mobilemenu() {
   nav.classList.toggle('open')
 }
 
+let listaUser = [
+  {
+    id: '1',
+    name: 'ADMIN',
+    email: 'algum@email.com',
+    senha: '123456'
+  }
+]
+
 function logar() {
   let email = document.querySelector('#email')
   let senha = document.querySelector('#senha')
   let msgerror = document.querySelector('#msgerror')
-
-  let listaUser = [
-    {
-      id: '1',
-      name: 'ADMIN',
-      email: 'algum@email.com',
-      senha: '123456'
-    }
-  ]
 
   //console.log(listaUser)
   //console.log(listaUser[0].email)
@@ -64,7 +64,7 @@ function sair() {
 function loged() {
   let userLog = JSON.parse(localStorage.getItem('login'))
   let senhaLog = JSON.parse(localStorage.getItem('senha'))
-  console.log(userLog)
+  //console.log(userLog)
   let usuario = document.querySelector('#usuario')
   let dash = document.querySelector('.dash-box')
 
@@ -101,8 +101,12 @@ function check() {
   }
 }
 check()
+const url = 'https://wellingtonokabayashi.github.io/login-system/api/index.json'
+
+//console.log(listaUser[0].senha)
 
 //===========server==========//
+/*
 const url = 'http://localhost:5500/api'
 
 function getUsers() {
@@ -140,3 +144,4 @@ function updateSenha() {
     })
     .catch(error => console.error(error))
 }
+*/
