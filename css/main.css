@@ -259,4 +259,10 @@ img:hover {
     margin-top: 30px;
     margin-left: 30px;
   }
+  .dash-box {
+    height: 100%;
+  }
+  .dash-box button {
+    margin-bottom: 80px;
+  }
 }

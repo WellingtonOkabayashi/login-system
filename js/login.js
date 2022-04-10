@@ -53,7 +53,25 @@ async function logar() {
   }
 }
 //console.log(userValid)
+function update() {
+  let newEmail = document.querySelector('#email').value
+  let newSenha = document.querySelector('#senha').value
 
+  //console.log(newEmail)
+  //console.log(newSenha)
+  if (newSenha == '' || newEmail == '') {
+    alert('Digite seu novo Email e senha')
+  } else {
+    axios
+      .put(apiUrl, newSenha && newEmail)
+      .then(response => alert('sucesso'))
+      .catch(error => console.log(error))
+
+    //window.location.href = 'dashboard.html'
+  }
+}
+
+//
 function sair() {
   localStorage.removeItem('token')
 
@@ -65,6 +83,7 @@ function sair() {
 function loged() {
   let userLog = localStorage.getItem('namedb')
   let senhaLog = localStorage.getItem('senhadb')
+  let emailLog = localStorage.getItem('emaildb')
   //console.log(userLog)
   let usuario = document.querySelector('#usuario')
   let dash = document.querySelector('.dash-box')
@@ -76,6 +95,15 @@ function loged() {
   <div class="dash-log" >
   <h4>Logado como : </h4>
   <h2>${userLog}</h2>
+  <h4>Digite seu novo Email</h4>
+          <div class="campos">
+          <input
+            id="email"
+            class="email"
+            type="email"
+            placeholder="${emailLog}"
+            required
+          />
   <h4>Digite sua nova senha</h4>
           <div class="campos">
           <input
@@ -86,7 +114,7 @@ function loged() {
             required
           />
           <div class="update">
-          <button onclick="updateSenha()">Mudar Senha</button>
+          <button onclick="update()">Atualizar Usuário</button>
         </div>
   </div>
   
@@ -102,46 +130,3 @@ function check() {
   }
 }
 check()
-
-//console.log(listaUser[0].senha)
-
-//===========server==========//
-/*
-const url = 'http://localhost:5500/api'
-
-function getUsers() {
-  axios
-    .get(url)
-    .then(response => {
-      const data = JSON.stringify(response.data)
-      console.log(data)
-    })
-
-    .catch(error => console.log(error))
-}
-
-function getUser() {
-  axios
-    .get(`${url}/1`)
-
-    .then(response => {
-      const data = response.data
-
-      console.log(data)
-    })
-    .catch(error => console.log(error))
-}
-
-function updateSenha() {
-  let senha = document.querySelector('#senha').value
-
-  let newSenha = senha
-  console.log(newSenha)
-  axios
-    .put(`${url}/1`, newSenha)
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch(error => console.error(error))
-}
-*/
