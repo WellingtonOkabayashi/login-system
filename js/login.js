@@ -12,8 +12,8 @@ async function logar() {
   await axios
     .get(apiUrl)
     .then(response => {
-      const usuario = response.data
-      //console.log(usuario[0])
+      const usuario = response.data.users
+      // console.log(usuario[0])
       localStorage.setItem('emaildb', usuario[0].email)
       localStorage.setItem('namedb', usuario[0].name)
       localStorage.setItem('senhadb', usuario[0].senha)
@@ -53,23 +53,6 @@ async function logar() {
   }
 }
 //console.log(userValid)
-function update() {
-  let newEmail = document.querySelector('#email').value
-  let newSenha = document.querySelector('#senha').value
-
-  //console.log(newEmail)
-  //console.log(newSenha)
-  if (newSenha == '' || newEmail == '') {
-    alert('Digite seu novo Email e senha')
-  } else {
-    axios
-      .put(apiUrl, newSenha && newEmail)
-      .then(response => alert('sucesso'))
-      .catch(error => console.log(error))
-
-    //window.location.href = 'dashboard.html'
-  }
-}
 
 //
 function sair() {
@@ -82,7 +65,7 @@ function sair() {
 }
 function loged() {
   let userLog = localStorage.getItem('namedb')
-  let senhaLog = localStorage.getItem('senhadb')
+
   let emailLog = localStorage.getItem('emaildb')
   //console.log(userLog)
   let usuario = document.querySelector('#usuario')
@@ -93,28 +76,15 @@ function loged() {
   dash.innerHTML = `
   <div class="dash-perfil">
   <div class="dash-log" >
-  <h4>Logado como : </h4>
+  <h4>Logado com o email: </h4>
+  <h2>${emailLog}</h2>
+  <h4>Status do Usuário: </h4>
   <h2>${userLog}</h2>
-  <h4>Digite seu novo Email</h4>
-          <div class="campos">
-          <input
-            id="email"
-            class="email"
-            type="email"
-            placeholder="${emailLog}"
-            required
-          />
-  <h4>Digite sua nova senha</h4>
-          <div class="campos">
-          <input
-            id="senha"
-            class="senha"
-            type="text"
-            placeholder="${senhaLog}"
-            required
-          />
+
+  
+           
           <div class="update">
-          <button onclick="update()">Atualizar Usuário</button>
+          <button onclick="sair()">SAIR</button>
         </div>
   </div>
   

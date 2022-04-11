@@ -1,39 +1,38 @@
 const express = require('express')
 const cors = require('cors')
-
+const axios = require('axios')
 const app = express()
-
-app.listen(5500, () => console.log('Rodando na porta 5500'))
 
 app.use(cors())
 
-app.use(express.json())
+let apiUrl =
+  'https://wellingtonokabayashi.github.io/login-system/api/index.json'
 
 app.get('/', async (req, res) => {
   try {
     const { data } = await axios(
       'https://wellingtonokabayashi.github.io/login-system/api/index.json'
     )
-    console.log(data)
+    //console.log(data.users)
 
-    return res.json(data)
+    return res.json(data.users)
   } catch (error) {
     console.log(error)
   }
 })
 
-app.route('/api/:id').put((req, res) => {
+app.route(apiUrl).put((req, res) => {
   const userId = req.params.id
 
   const user = users.find(user => Number(user.id) === Number(userId))
-
+  console.log(user)
   if (!user) {
     return res.json('User nor found!')
   }
 
   const updatedUser = {
     ...user,
-    name: req.body.name,
+
     email: req.body.email,
     senha: req.body.senha
   }
@@ -48,10 +47,12 @@ app.route('/api/:id').put((req, res) => {
   res.json('Updated user')
 })
 
-app.route('/api/:id').delete((req, res) => {
+app.route('/:id').delete((req, res) => {
   const userId = req.params.id
 
   users = users.filter(user => Number(user.id) !== Number(userId))
 
   res.json('Deleted User')
 })
+
+app.listen(5500, () => console.log('Rodando na porta 5500'))
