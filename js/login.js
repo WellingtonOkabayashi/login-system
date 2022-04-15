@@ -8,23 +8,7 @@ function mobilemenu() {
 const apiUrl =
   'https://wellingtonokabayashi.github.io/login-system/api/index.json'
 
-//verification()
-
 async function logar() {
-  /*await axios
-    .get(apiUrl)
-
-    .then(response => {
-      const usuario = response.data
-      console.log(usuario)
-      
-      
-      localStorage.setItem('senhadb', usuario.senha)
-      
-    })
-
-*/
-  verification()
   async function verification() {
     try {
       const response = await fetch(apiUrl)
@@ -40,50 +24,45 @@ async function logar() {
     }
   }
 
+  verification()
+
   function verifyUser(users) {
+    let email = document.querySelector('#email')
+    let senha = document.querySelector('#senha')
+    let msgerror = document.querySelector('#msgerror')
+
     for (let user of users) {
       if (email.value == user.email && senha.value == user.senha) {
-        window.location.href = 'src/dashboard.html'
-
-        localStorage.setItem('emaildb', user.email)
-        localStorage.setItem('namedb', user.name)
-
         let token = Math.random().toString(16).substr(2)
         localStorage.setItem('token', token)
-      }
-      //
-      else {
-        msgerror.setAttribute('style', 'display:block')
-        msgerror.innerHTML = 'Email ou Senha incorretos'
-        email.focus()
-      }
-    }
-  }
-  let email = document.querySelector('#email')
-  let senha = document.querySelector('#senha')
-  let msgerror = document.querySelector('#msgerror')
 
-  let userValid = {
-    email: '',
-    senha: '',
-    name: ''
+        localStorage.setItem('email', user.email)
+        localStorage.setItem('name', user.name)
+
+        window.location.href = 'src/dashboard.html'
+      }
+    } //for user
+  } //function users
+  if (email || senha == null) {
+    msgerror.setAttribute('style', 'display:block')
+    msgerror.innerHTML = 'Login Incorreto'
+    email.focus()
   }
-}
-//console.log(userValid)
+} //function logar
 
 //
 function sair() {
   localStorage.removeItem('token')
 
-  localStorage.removeItem('namedb')
-  localStorage.removeItem('senhadb')
-  localStorage.removeItem('emaildb')
+  localStorage.removeItem('name')
+  localStorage.removeItem('senha')
+  localStorage.removeItem('email')
   window.location.href = '../index.html'
 }
 function loged() {
-  let userLog = localStorage.getItem('namedb')
+  let userLog = localStorage.getItem('name')
 
-  let emailLog = localStorage.getItem('emaildb')
+  let emailLog = localStorage.getItem('email')
   //console.log(userLog)
   let usuario = document.querySelector('#usuario')
   let dash = document.querySelector('.dash-box')
