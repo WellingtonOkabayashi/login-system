@@ -6,7 +6,7 @@ Para quem quiser testar segue o link abaixo .
 
 https://wellingtonokabayashi.github.io/login-system/index.html
 
-Lista de usuários para testar :
+Lista de usuários para testar o Sistema :
 
 Email : master@master.com
 Senha : master
