@@ -8,19 +8,57 @@ function mobilemenu() {
 const apiUrl =
   'https://wellingtonokabayashi.github.io/login-system/api/index.json'
 
+//verification()
+
 async function logar() {
-  await axios
+  /*await axios
     .get(apiUrl)
+
     .then(response => {
-      const usuario = response.data.users
-      // console.log(usuario[0])
-      localStorage.setItem('emaildb', usuario[0].email)
-      localStorage.setItem('namedb', usuario[0].name)
-      localStorage.setItem('senhadb', usuario[0].senha)
+      const usuario = response.data
+      console.log(usuario)
+      
+      
+      localStorage.setItem('senhadb', usuario.senha)
+      
     })
 
-    .catch(error => console.log(error))
+*/
+  verification()
+  async function verification() {
+    try {
+      const response = await fetch(apiUrl)
+      //console.log(response)
+      const data = await response.json()
 
+      let users = data
+
+      verifyUser(users)
+      //console.log(usuarios)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function verifyUser(users) {
+    for (let user of users) {
+      if (email.value == user.email && senha.value == user.senha) {
+        window.location.href = 'src/dashboard.html'
+
+        localStorage.setItem('emaildb', user.email)
+        localStorage.setItem('namedb', user.name)
+
+        let token = Math.random().toString(16).substr(2)
+        localStorage.setItem('token', token)
+      }
+      //
+      else {
+        msgerror.setAttribute('style', 'display:block')
+        msgerror.innerHTML = 'Email ou Senha incorretos'
+        email.focus()
+      }
+    }
+  }
   let email = document.querySelector('#email')
   let senha = document.querySelector('#senha')
   let msgerror = document.querySelector('#msgerror')
@@ -29,27 +67,6 @@ async function logar() {
     email: '',
     senha: '',
     name: ''
-  }
-
-  if (
-    email.value == localStorage.getItem('emaildb') &&
-    senha.value == localStorage.getItem('senhadb')
-  ) {
-    window.location.href = 'src/dashboard.html'
-
-    userValid = {
-      email: localStorage.getItem('emaildb'),
-      senha: localStorage.getItem('senhadb')
-    }
-
-    let token = Math.random().toString(16).substr(2)
-    localStorage.setItem('token', token)
-  }
-  //
-  else {
-    msgerror.setAttribute('style', 'display:block')
-    msgerror.innerHTML = 'Email ou Senha incorretos'
-    email.focus()
   }
 }
 //console.log(userValid)
