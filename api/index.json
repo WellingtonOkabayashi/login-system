@@ -2,9 +2,20 @@
   "users": 
   [{
     "id": 1,
+    "name": "MASTER",
+    "senha": "master",
+    "email": "master@master.com" 
+  },
+  {
+    "id": 2,
     "name": "ADMIN",
-    "senha": "123456",
-    "email": "seuemail@seuemail.com" 
+    "senha": "admin",
+    "email": "admin@admin.com" 
+  },{
+    "id": 3,
+    "name": "GUEST",
+    "senha": "guest",
+    "email": "guest@guest.com" 
   }
   
   
